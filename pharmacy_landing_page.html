@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Orange Chemist - Your Trusted Neighborhood Pharmacy</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f8fffe;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, #2e8b57 0%, #228b22 100%);
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: #ff6b35;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+        }
+
+        .logo h1 {
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .emergency-btn {
+            background: #ff6b35;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(255, 107, 53, 0.7); }
+            70% { box-shadow: 0 0 0 10px rgba(255, 107, 53, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(255, 107, 53, 0); }
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #e8f5e8 0%, #f0f8ff 100%);
+            padding: 4rem 0;
+            text-align: center;
+        }
+
+        .hero h2 {
+            font-size: 2.5rem;
+            color: #2e8b57;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 12px 24px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #25d366 0%, #128c7e 100%);
+            color: white;
+        }
+
+        .btn-secondary {
+            background: #ff6b35;
+            color: white;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+        }
+
+        /* Product Categories */
+        .categories {
+            padding: 4rem 0;
+            background: white;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            color: #2e8b57;
+            margin-bottom: 3rem;
+            font-weight: 700;
+        }
+
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .category-card {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .category-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            border-color: #ff6b35;
+        }
+
+        .category-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #ff6b35, #ff8c42);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            font-size: 24px;
+            color: white;
+        }
+
+        .category-card h3 {
+            color: #2e8b57;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        /* Catalogue Section */
+        .catalogue {
+            padding: 4rem 0;
+            background: linear-gradient(135deg, #f0f8ff 0%, #e8f5e8 100%);
+        }
+
+        .catalogue-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .catalogue-text h2 {
+            color: #2e8b57;
+            margin-bottom: 1rem;
+            font-size: 2rem;
+        }
+
+        .catalogue-preview {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .pdf-preview {
+            width: 100%;
+            height: 300px;
+            background: linear-gradient(135deg, #e8f5e8, #f0f8ff);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1rem;
+            border: 2px dashed #2e8b57;
+        }
+
+        /* Prescription Upload */
+        .prescription {
+            padding: 4rem 0;
+            background: white;
+        }
+
+        .prescription-form {
+            max-width: 600px;
+            margin: 0 auto;
+            background: #f8fffe;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+        }
+
+        .upload-area {
+            border: 2px dashed #2e8b57;
+            border-radius: 10px;
+            padding: 2rem;
+            text-align: center;
+            margin: 1rem 0;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .upload-area:hover {
+            background: #e8f5e8;
+            border-color: #ff6b35;
+        }
+
+        .upload-area.dragover {
+            background: #e8f5e8;
+            border-color: #ff6b35;
+        }
+
+        input[type="file"] {
+            display: none;
+        }
+
+        /* Customer Service */
+        .customer-service {
+            padding: 4rem 0;
+            background: linear-gradient(135deg, #2e8b57 0%, #228b22 100%);
+            color: white;
+        }
+
+        .service-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            text-align: center;
+            padding: 1.5rem;
+        }
+
+        .service-icon {
+            width: 50px;
+            height: 50px;
+            background: #ff6b35;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            font-size: 20px;
+        }
+
+        /* Testimonials */
+        .testimonials {
+            padding: 4rem 0;
+            background: white;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .testimonial {
+            background: #f8fffe;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+        }
+
+        .stars {
+            color: #ffd700;
+            margin-bottom: 1rem;
+        }
+
+        /* Footer */
+        .footer {
+            background: #333;
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .hero h2 {
+                font-size: 2rem;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .catalogue-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .header-content {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+
+        /* Floating WhatsApp Button */
+        .whatsapp-float {
+            position: fixed;
+            width: 60px;
+            height: 60px;
+            bottom: 40px;
+            right: 40px;
+            background: #25d366;
+            color: white;
+            border-radius: 50px;
+            text-align: center;
+            font-size: 30px;
+            box-shadow: 2px 2px 3px #999;
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-10px);
+            }
+            60% {
+                transform: translateY(-5px);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <div class="logo-icon">
+                        <i class="fas fa-plus"></i>
+                    </div>
+                    <div>
+                        <h1>Orange Chemist</h1>
+                        <p style="font-size: 0.8rem; opacity: 0.9;">Your Trusted Neighborhood Pharmacy</p>
+                    </div>
+                </div>
+                <a href="tel:+911234567890" class="emergency-btn">
+                    <i class="fas fa-phone"></i> Emergency: 24/7
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h2>Healthcare Made Simple & Convenient</h2>
+            <p>Your trusted neighborhood pharmacy delivering quality medicines, wellness products, and health essentials right to your doorstep.</p>
+            <div class="cta-buttons">
+                <a href="https://wa.me/911234567890?text=Hi! I'd like to place an order" class="btn btn-primary">
+                    <i class="fab fa-whatsapp"></i> Order on WhatsApp
+                </a>
+                <a href="#catalogue" class="btn btn-secondary">
+                    <i class="fas fa-book"></i> View Catalogue
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Product Categories -->
+    <section class="categories">
+        <div class="container">
+            <h2 class="section-title">Our Product Categories</h2>
+            <div class="categories-grid">
+                <div class="category-card">
+                    <div class="category-icon">
+                        <i class="fas fa-pills"></i>
+                    </div>
+                    <h3>Medicines & Prescriptions</h3>
+                    <p>Wide range of generic and branded medicines with expert consultation</p>
+                </div>
+                <div class="category-card">
+                    <div class="category-icon">
+                        <i class="fas fa-baby"></i>
+                    </div>
+                    <h3>Baby Care</h3>
+                    <p>Complete baby care essentials, diapers, formula, and health products</p>
+                </div>
+                <div class="category-card">
+                    <div class="category-icon">
+                        <i class="fas fa-spa"></i>
+                    </div>
+                    <h3>Skincare & Beauty</h3>
+                    <p>Premium skincare, cosmetics, and personal care products</p>
+                </div>
+                <div class="category-card">
+                    <div class="category-icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <h3>Wellness & Supplements</h3>
+                    <p>Vitamins, supplements, and health monitoring devices</p>
+                </div>
+                <div class="category-card">
+                    <div class="category-icon">
+                        <i class="fas fa-snowflake"></i>
+                    </div>
+                    <h3>Frozen Items</h3>
+                    <p>Cold storage medicines and frozen health products</p>
+                </div>
+                <div class="category-card">
+                    <div class="category-icon">
+                        <i class="fas fa-first-aid"></i>
+                    </div>
+                    <h3>Healthcare Devices</h3>
+                    <p>Blood pressure monitors, thermometers, and medical equipment</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Digital Catalogue -->
+    <section class="catalogue" id="catalogue">
+        <div class="container">
+            <div class="catalogue-content">
+                <div class="catalogue-text">
+                    <h2>Browse Our Complete Digital Catalogue</h2>
+                    <p>Explore our comprehensive product brochure with detailed information, prices, and availability. Download or view online for easy ordering.</p>
+                    <div class="cta-buttons">
+                        <a href="#" class="btn btn-primary" onclick="alert('Catalogue will open in new tab')">
+                            <i class="fas fa-download"></i> Download PDF
+                        </a>
+                        <a href="#" class="btn btn-secondary" onclick="alert('Interactive catalogue opening...')">
+                            <i class="fas fa-eye"></i> View Online
+                        </a>
+                    </div>
+                </div>
+                <div class="catalogue-preview">
+                    <div class="pdf-preview">
+                        <div>
+                            <i class="fas fa-file-pdf" style="font-size: 4rem; color: #ff6b35; margin-bottom: 1rem;"></i>
+                            <h3>Product Catalogue 2025</h3>
+                            <p>Complete product listing with prices</p>
+                        </div>
+                    </div>
+                    <p><strong>Updated Monthly</strong> • Latest Prices • Stock Availability</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Prescription Upload -->
+    <section class="prescription">
+        <div class="container">
+            <h2 class="section-title">Upload Your Prescription</h2>
+            <div class="prescription-form">
+                <h3 style="text-align: center; color: #2e8b57; margin-bottom: 1.5rem;">Quick & Secure Prescription Service</h3>
+                <div class="upload-area" onclick="document.getElementById('prescription-file').click()">
+                    <i class="fas fa-cloud-upload-alt" style="font-size: 3rem; color: #2e8b57; margin-bottom: 1rem;"></i>
+                    <h4>Click to upload or drag & drop</h4>
+                    <p>Supported formats: JPG, PNG, PDF (Max 5MB)</p>
+                    <input type="file" id="prescription-file" accept=".jpg,.jpeg,.png,.pdf" multiple>
+                </div>
+                <div style="text-align: center; margin-top: 1.5rem;">
+                    <a href="https://wa.me/911234567890?text=Hi! I'd like to upload my prescription and place an order" class="btn btn-primary">
+                        <i class="fab fa-whatsapp"></i> Send via WhatsApp
+                    </a>
+                </div>
+                <p style="text-align: center; margin-top: 1rem; font-size: 0.9rem; color: #666;">
+                    Our licensed pharmacists will review and contact you within 30 minutes
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Customer Service -->
+    <section class="customer-service">
+        <div class="container">
+            <h2 class="section-title" style="color: white;">Why Choose Orange Chemist?</h2>
+            <div class="service-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-truck"></i>
+                    </div>
+                    <h3>Free Home Delivery</h3>
+                    <p>Free delivery on orders above ₹100<br>Express delivery in 30-60 minutes</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <h3>Service Hours</h3>
+                    <p>Mon-Sat: 8:00 AM - 10:00 PM<br>Sunday: 9:00 AM - 9:00 PM<br>Emergency: 24/7</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Licensed & Trusted</h3>
+                    <p>Certified pharmacists<br>100% genuine medicines<br>Quality guaranteed</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <h3>Our Location</h3>
+                    <p>123 Health Street, Wellness Area<br>Mumbai, Maharashtra<br>Phone: +91 12345 67890</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials">
+        <div class="container">
+            <h2 class="section-title">What Our Customers Say</h2>
+            <div class="testimonials-grid">
+                <div class="testimonial">
+                    <div class="stars">★★★★★</div>
+                    <p>"Excellent service! Fast delivery and genuine medicines. The WhatsApp ordering is so convenient. Highly recommended!"</p>
+                    <strong>- Priya Sharma</strong>
+                </div>
+                <div class="testimonial">
+                    <div class="stars">★★★★★</div>
+                    <p>"Orange Chemist has been our family pharmacy for years. Always helpful, professional, and reliable. Great prices too!"</p>
+                    <strong>- Rajesh Kumar</strong>
+                </div>
+                <div class="testimonial">
+                    <div class="stars">★★★★★</div>
+                    <p>"Love the prescription upload feature! So easy to order medicines online. Free delivery is a bonus. Keep it up!"</p>
+                    <strong>- Meera Patel</strong>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin-bottom: 2rem;">
+                <div>
+                    <h3 style="color: #ff6b35; margin-bottom: 1rem;">Orange Chemist</h3>
+                    <p>Your trusted neighborhood pharmacy committed to providing quality healthcare solutions and excellent customer service.</p>
+                </div>
+                <div>
+                    <h4 style="margin-bottom: 1rem;">Quick Links</h4>
+                    <p><a href="#catalogue" style="color: #ccc; text-decoration: none;">Product Catalogue</a></p>
+                    <p><a href="#prescription" style="color: #ccc; text-decoration: none;">Upload Prescription</a></p>
+                    <p><a href="tel:+911234567890" style="color: #ccc; text-decoration: none;">Emergency Contact</a></p>
+                </div>
+                <div>
+                    <h4 style="margin-bottom: 1rem;">Contact Info</h4>
+                    <p><i class="fas fa-phone"></i> +91 12345 67890</p>
+                    <p><i class="fas fa-envelope"></i> info@orangechemist.com</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Mumbai, Maharashtra</p>
+                </div>
+            </div>
+            <hr style="border-color: #555; margin: 2rem 0;">
+            <p>&copy; 2025 Orange Chemist. All rights reserved. | Licensed Pharmacy | Quality Assured</p>
+        </div>
+    </footer>
+
+    <!-- Floating WhatsApp Button -->
+    <a href="https://wa.me/911234567890?text=Hi! I need help with medicines and healthcare products" class="whatsapp-float" title="Chat on WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <script>
+        // Prescription file upload handling
+        const uploadArea = document.querySelector('.upload-area');
+        const fileInput = document.getElementById('prescription-file');
+
+        ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+            uploadArea.addEventListener(eventName, preventDefaults, false);
+        });
+
+        function preventDefaults(e) {
+            e.preventDefault();
+            e.stopPropagation();
+        }
+
+        ['dragenter', 'dragover'].forEach(eventName => {
+            uploadArea.addEventListener(eventName, highlight, false);
+        });
+
+        ['dragleave', 'drop'].forEach(eventName => {
+            uploadArea.addEventListener(eventName, unhighlight, false);
+        });
+
+        function highlight() {
+            uploadArea.classList.add('dragover');
+        }
+
+        function unhighlight() {
+            uploadArea.classList.remove('dragover');
+        }
+
+        uploadArea.addEventListener('drop', handleDrop, false);
+
+        function handleDrop(e) {
+            const dt = e.dataTransfer;
+            const files = dt.files;
+            handleFiles(files);
+        }
+
+        fileInput.addEventListener('change', function() {
+            handleFiles(this.files);
+        });
+
+        function handleFiles(files) {
+            if (files.length > 0) {
+                const fileNames = Array.from(files).map(file => file.name).join(', ');
+                uploadArea.innerHTML = `
+                    <i class="fas fa-check-circle" style="font-size: 3rem; color: #2e8b57; margin-bottom: 1rem;"></i>
+                    <h4>Files Selected</h4>
+                    <p>${fileNames}</p>
+                    <p style="margin-top: 1rem;"><small>Click "Send via WhatsApp" below to proceed</small></p>
+                `;
+            }
+        }
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add scroll animation for cards
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all cards for animation
+        document.querySelectorAll('.category-card, .testimonial, .service-card').forEach((card) => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
+            card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(card);
+        });
+    </script>
+</body>
+</html>
